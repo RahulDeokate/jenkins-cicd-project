@@ -1,0 +1,48 @@
+# 👉 Terraform state files (sensitive & generated)
+terraform.tfstate
+terraform.tfstate.backup
+*.tfstate
+*.tfstate.backup
+ 
+# 👉 Terraform-specific directories (keep your code, ignore internal folders)
+.terraform/
+.crash/
+ 
+# 👉 Secrets and environment configs
+.env
+*.pem
+*.key
+*.crt
+ 
+# 👉 Ignore kubeconfig and kubectl cache
+.kube/
+.kube/config
+ 
+# 👉 AWS CLI credentials (for safety, if generated)
+.aws/credentials
+ 
+# 👉 Log files
+*.log
+logs/
+debug.log
+ 
+# 👉 System and editor files
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+ 
+# 👉 Python artifacts if any (optional for scripts)
+__pycache__/
+*.pyc
+ 
+# 👉 Node modules or dependencies (in case you add node app)
+node_modules/
+ 
+# 👉 Docker-related
+**/.docker/
+docker-compose.override.yml
+ 
+# 👉 Ignore Jenkins workspace files (if mounted locally)
+jenkins_home/
