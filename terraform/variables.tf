@@ -31,3 +31,8 @@ variable "availability_zone_2" {
   description = "availability zone 2"
   type = string
 }
+
+variable "cluster_name" {
+  description = "name of the cluster"
+}
+

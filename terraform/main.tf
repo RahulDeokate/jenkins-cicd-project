@@ -11,3 +11,10 @@ module "networking" {
   availability_zone_1 = var.availability_zone_1
   availability_zone_2 = var.availability_zone_2
 }
+
+module "eks" {
+  source = "./modules/eks"
+  cluster_name = var.cluster_name
+  subnet_1 = module.networking.public_subnet_1
+  subnet_2 = module.networking.public_subnet_2
+}
