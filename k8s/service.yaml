@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: devops-profile-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: devops-profile
+  ports:
+  - port: 80
+    targetPort: 80

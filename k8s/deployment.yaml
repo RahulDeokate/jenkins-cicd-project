@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-landing-page
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-profile
+  template:
+    metadata:
+      labels:
+        app: devops-profile
+    spec:
+      containers:
+      - name: devops-profile
+        image: rahuldeokate/cidd:latest
+        ports:
+        - containerPort: 80
