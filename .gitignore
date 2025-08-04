@@ -3,7 +3,7 @@ terraform.tfstate
 terraform.tfstate.backup
 *.tfstate
 *.tfstate.backup
- 
+.devcontainer
 # 👉 Terraform-specific directories (keep your code, ignore internal folders)
 .terraform/
 .crash/
