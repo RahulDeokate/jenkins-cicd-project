@@ -3,15 +3,6 @@ variable "vpc_cidr" {
   type = string
 }
 
-variable "vpc_id" {
-  description = "vpc id"
-}
-
-variable "vpc_id" {
-  description = "vpc id"
-  type = string
-}
-
 variable "cidr_subnet_1" {
   description = "cidr range for subnet 1"
   type = string
@@ -48,10 +39,6 @@ variable "min_size" {
   description = "min size of nodes"
 }
 
-variable "instance_type" {
-  description = "ec2 instance type"
-}
-
 variable "node_group_name" {
   description = "node group name"
 }
@@ -67,4 +54,5 @@ variable "instance_type" {
 
 variable "key_name" {
   description = "key name of server"
+  default = "devops-server"
 }

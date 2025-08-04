@@ -1,0 +1,61 @@
+pipeline {
+  agent any
+
+  environment {
+    // Replace with your actual image name and tag
+    DOCKER_IMAGE = "rahuldeokate/jenkins-cicd:latest"
+
+    // Jenkins credentials ID (add via Jenkins > Manage Credentials)
+    DOCKER_CREDENTIALS_ID = "dockerhub-creds"
+  }
+
+  stages {
+
+    stage('📦 Clone Code') {
+      steps {
+        echo "✅ Checking out code..."
+        checkout scm
+      }
+    }
+
+    stage('🐳 Build Docker Image') {
+      steps {
+        echo "🔧 Building Docker image..."
+        script {
+          sh 'docker build -t $DOCKER_IMAGE .'
+        }
+      }
+    }
+
+    stage('📤 Push Image to Docker Hub') {
+      steps {
+        echo "🚀 Pushing Docker image..."
+        withCredentials([usernamePassword(credentialsId: "$DOCKER_CREDENTIALS_ID", usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+          sh '''
+            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+            docker push $DOCKER_IMAGE
+          '''
+        }
+      }
+    }
+
+    stage('🚢 Deploy to Kubernetes') {
+      steps {
+        echo "📡 Deploying to EKS cluster..."
+        script {
+          // Assumes kubeconfig is already set on Jenkins EC2
+          sh 'kubectl set image deployment/devops-landing-page devops-profile=$DOCKER_IMAGE --record'
+        }
+      }
+    }
+  }
+
+  post {
+    success {
+      echo "🎉 CI/CD pipeline executed successfully!"
+    }
+    failure {
+      echo "❌ Pipeline failed. Check logs above."
+    }
+  }
+}
