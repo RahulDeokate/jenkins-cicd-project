@@ -36,3 +36,22 @@ variable "cluster_name" {
   description = "name of the cluster"
 }
 
+variable "desired_size" {
+  description = "desired size of nodes"
+}
+
+variable "max_size" {
+  description = "maz size of nodes"
+}
+
+variable "min_size" {
+  description = "min size of nodes"
+}
+
+variable "instance_type" {
+  description = "ec2 instance type"
+}
+
+variable "node_group_name" {
+  description = "node group name"
+}

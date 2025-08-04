@@ -18,3 +18,15 @@ module "eks" {
   subnet_1 = module.networking.public_subnet_1
   subnet_2 = module.networking.public_subnet_2
 }
+
+module "nodegroup" {
+  source = "./modules/nodegroup"
+  cluster_name = module.eks.cluster_name
+  node_group_name = var.node_group_name
+  public_subnet_1 = module.networking.public_subnet_1
+  public_subnet_2 = module.networking.public_subnet_2
+  desired_size = var.desired_size
+  max_size = var.max_size
+  min_size = var.min_size
+  instance_type = var.instance_type
+}
