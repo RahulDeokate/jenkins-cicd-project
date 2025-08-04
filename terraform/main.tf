@@ -30,3 +30,12 @@ module "nodegroup" {
   min_size = var.min_size
   instance_type = var.instance_type
 }
+
+module "ec2-jenkins" {
+  source = "./modules/ec2-jenkins"
+  vpc_id = module.vpc.vpc_id
+  ami = var.ami
+  instance_type = var.instance_type
+  subnet_1 = module.networking.public_subnet_1
+  key_name = var.key_name
+}

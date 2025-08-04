@@ -32,3 +32,8 @@ output "node_group_name" {
   description = "node group name"
   value = module.nodegroup.node_group_name
 }
+
+output "jenkins_public_ip" {
+  description = "jenkins server public ip"
+  value = module.ec2-jenkins.jenkins_public_ip
+}

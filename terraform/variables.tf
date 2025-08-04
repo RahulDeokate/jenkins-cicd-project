@@ -55,3 +55,16 @@ variable "instance_type" {
 variable "node_group_name" {
   description = "node group name"
 }
+
+variable "ami" {
+  description = "name of ami"
+}
+
+variable "instance_type" {
+  description = "instance type of jenkins server"
+  default = "t2.medium"
+}
+
+variable "key_name" {
+  description = "key name of server"
+}
