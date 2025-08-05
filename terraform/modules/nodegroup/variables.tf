@@ -29,4 +29,6 @@ variable "min_size" {
 
 variable "instance_type" {
   description = "ec2 instance type"
+  type = list(string)
+  default = [ "t2.micro" ]
 }
