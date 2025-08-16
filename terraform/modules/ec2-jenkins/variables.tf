@@ -9,7 +9,7 @@ variable "ami" {
 variable "instance_type" {
   description = "instance type of jenkins server"
   type = list(string)
-  default = ["t2.micro"] 
+  default = ["t3.micro"] 
 }
 
 variable "subnet_1" {
